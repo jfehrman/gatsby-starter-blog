@@ -1,39 +1,27 @@
-module.exports = function(plop) {
-  plop.setGenerator('blog', {
-    description: 'Write a new blog entry.',
+module.exports = function(plop) { // Plop object for building generators.
+  plop.setGenerator('blog', { // Name of the generator.
+    description: 'Write a new blog entry.', // Description of the generator.
     prompts: [
+      // Blog name
       {
-        type: 'input',
-        name: 'blogTitle',
-        message: 'Blog title:',
-      },
-      {
-        type: 'input',
-        name: 'blogDescription',
-        message: 'Blog description:',
-      },
-      {
-        type: 'editor',
-        name: 'blogContent',
-        message: 'Blog content:',
-      }
+        type: '', // inquirer type
+        name: '', // variable name
+        message: '', // display message
+      }, 
+      //Blog description
+      //Blog Content
     ],
-    actions: function(data) {
-      const date = new Date(Date.now()).toISOString();
-      data.date = date;
+    actions: function(data) { // Defines the actions to be taken.  Can be array.  Data is information collected in prompts.
+      // Get the date in UTC.
+      // Uses handlebars template.
       return [
         {
-          type: 'add',
-          path: 'content/blog/{{ dashCase blogTitle }}/index.md',
-          template: `---
-title: {{ blogTitle }}
-date: {{ date }}
-description: {{ blogDescription }}
----
-{{ blogContent }}
-`,
+          type: '', // Type of action: add, modify, append
+          path: '', // Where to put the generated file.
+          template: ``, // Front matter: title, date description, and blog content
         },
       ];
     },
   });
 }
+
